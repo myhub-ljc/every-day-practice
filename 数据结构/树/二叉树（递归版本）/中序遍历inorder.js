@@ -27,3 +27,20 @@ const bt = {
         }
     }
 }
+
+const inorder = (root) => {
+    if (root == null) {
+        return false;
+    }
+    //先访问根节点的左子树
+    inorder(root.left);
+
+    //再访问根节点
+    console.log(root.val);
+
+    //然后访问根节点的右子树
+    inorder(root.right);
+};
+
+inorder(bt);
+

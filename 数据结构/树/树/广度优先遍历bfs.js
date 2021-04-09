@@ -41,14 +41,17 @@
 const bfs = root => {
     //新建一个队列,并将根节点入队
     const queue = [root];
+
     while (queue.length > 0) {
+        
         //将队头出队并访问
         const n = queue.shift();
         console.log(n.val);
+
         //然后对children挨个进行遍历
         n.children.forEach((child) => {
-        //重复二三步骤
-        queue.push(child);
+            //重复二三步骤
+            queue.push(child);
         })
     }
 }
