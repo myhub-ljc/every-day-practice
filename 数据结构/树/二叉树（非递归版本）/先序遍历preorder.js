@@ -35,17 +35,21 @@
 }
 
 const preorder = (root) => {
-    if (root === null) return;
+    if (!root) { return; }
+    
     //创建一个栈，并将根节点入栈
     const stack = [root];
-    while (stack.length > 0) {
-        //弹出栈并访问
+
+    while (stack.length) {
+        //因为首先要访问根节点，所以应该先将栈顶元素弹出并访问
         const n = stack.pop();
         console.log(n.val);
-        //先将右子树入栈
-        if(n.right) stack.push(n.right);
-        //最后再将左子树入栈
-        if(n.left) stack.push(n.left);
+
+        //最后需要访问右子树
+        if (n.right) stack.push(n.right);
+
+        //接下来需要访问左子树(因此需要先将右子树入栈)
+        if (n.left) stack.push(n.left);
     }
 }
 

@@ -29,15 +29,18 @@ const bt = {
 };
 
 const postorder = (root) => {
-    if (root == null) return false;
+    if (!root) { return; }
     const stack = [root];
+    //用于逆序输出
     const outputStack = [];
+
     while (stack.length) {
         const n = stack.pop();
         outputStack.push(n);
         if (n.left) stack.push(n.left);
         if (n.right) stack.push(n.right);
     }
+
     while (outputStack.length) {
         const n = outputStack.pop();
         console.log(n.val);

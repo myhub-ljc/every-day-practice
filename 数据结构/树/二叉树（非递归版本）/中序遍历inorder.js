@@ -29,21 +29,24 @@ const bt = {
 }
 
 const inorder = (root) => {
-    if (root == null) {
-        return false;
-    }
+    if (!root) { return; }
+    
     //首先将左子树入栈
     const stack = [];
     let p = root;
+    
     while (stack.length || p) {
+        //然后访问左子树
         while (p) {
             stack.push(p);
             p = p.left;
         }
-        //访问根节点
+
+        //紧接着访问根节点
         const n = stack.pop();
         console.log(n.val);
-        //最后将右子树入栈
+
+        //最后访问右节点
         p = n.right;
     }
 };
