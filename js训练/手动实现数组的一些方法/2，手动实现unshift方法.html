@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>手动实现数组的unshift方法</title>
+  </head>
+  <body>
+    <script>
+      Array.prototype.myUnshift = function () {
+        let pos = 0;
+        for (var i = 0; i < arguments.length; i++) {
+          this.splice(pos, 0, arguments[i]);
+          pos++;
+        }
+
+        return this.length; //注意：返回的是添加新元素后数组的新长度
+      };
+
+      const arr = [1, 2, 3];
+      arr.myUnshift(3, 4, 5);
+      console.log(arr);
+    </script>
+  </body>
+</html>
