@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>原型继承的封装</title>
+  </head>
+  <body>
+    <script>
+      //方式一：未封装之前的继承
+      function Teacher() {}
+      function Buffer() {}
+      function Student() {}
+
+      Buffer.prototype = Teacher.prototype;
+      var buffer = new Buffer();
+      Student.prototype = buffer;
+
+      var t = new Teacher();
+      var s = new Student();
+      console.log(t);
+      console.log(s);
+
+      //方式二：封装之后的继承
+      function Teacher() {}
+      function Buffer() {}
+      function Student() {}
+
+      //调用
+      inherit(Student, Teacher);
+      var t = new Teacher();
+      var s = new Student();
+      console.log(t);
+      console.log(s);
+
+      function inherit(target, origin) {
+        function Buffer() {}
+        Buffer.prototype = origin.prototype;
+        var buffer = new Buffer();
+        target.prototype = buffer;
+
+        target.prototype.constructor = target;
+        target.prototype.super_class = origin;
+      }
+    </script>
+  </body>
+</html>
