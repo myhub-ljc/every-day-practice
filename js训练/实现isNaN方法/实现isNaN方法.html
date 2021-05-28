@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>实现isNaN方法</title>
+  </head>
+  <body>
+    <script>
+      function myIsNaN(n) {
+        //注意：NaN == NaN 结果为false 所以这里的结果最后要转为字符串类型
+        var res = Number(n) + "";
+        if (res == "NaN") {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      //   console.log(myIsNaN("a")); //true
+      console.log(myIsNaN(1)); //false
+    </script>
+  </body>
+</html>
