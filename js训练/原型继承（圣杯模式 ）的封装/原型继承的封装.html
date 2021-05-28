@@ -43,6 +43,29 @@
         target.prototype.constructor = target;
         target.prototype.super_class = origin;
       }
+
+      //方式三：再次进行封装（让其自动执行）
+      //以下也是雅虎中国当年对yy3的一个封装代码
+      var inherit = (function () {
+        var Buffer = function () {};
+        return function inherit(Target, Origin) {
+          Buffer.prototype = Origin.prototype;
+          Target.prototype = new Buffer();
+
+          Target.prototype.constructor = Target;
+          Target.prototype.super_class = Origin;
+        };
+      })();
+
+      function Teacher() {}
+      function Student() {}
+      inherit(Student, Teacher);
+      Student.prototype.color = "red";
+      var t = new Teacher();
+      var s = new Student();
+
+      console.log(s);
+      console.log(t);
     </script>
   </body>
 </html>
