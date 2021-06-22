@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //我们直接手动来封装一个浅拷贝吧
+      function shallowClone(target) {
+        //首先我们肯定需要判断一下target是否存在以及它的类型是否是对象(因为基本数据类型是不会牵扯到这个问题的)
+        if (typeof target === "object" && typeof target !== "null") {
+          //我们根据target是数组还是对象来创建一个空的cloneTarget
+          const cloneTarget = Array.isArray(target) ? [] : {};
+
+          //接下来便是通过循环遍历target
+          for (let item in target) {
+            //当然了, 如果target的原型上有属性的话, 我们也是需要对其进行shallowClone的
+            if (target.hasOwnProperty(item)) {
+              cloneTarget[item] = target[item];
+            }
+          }
+
+          //最后肯定是要将它return出去的啦
+          return cloneTarget;
+        } else {
+          //否则的话 直接返回target就行了
+          return target;
+        }
+      }
+
+      //最后我们来测试一下吧
+      const arr = [];
+      const newArr = shallowClone(arr);
+      console.log(arr, newArr);
+      newArr[0] = 2;
+      console.log(arr, newArr);
+    </script>
+  </body>
+</html>
