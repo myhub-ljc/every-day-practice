@@ -19,11 +19,11 @@
   text-decoration: none;
 }
 
-.tab .active {
+.tab .cur {
   background-color: black;
 }
 
-.tab .active a {
+.tab .cur a {
   color: white;
 }
 

@@ -10,7 +10,7 @@
   <body>
     <div class="card">
       <div class="tab">
-        <div class="tab-item active">
+        <div class="tab-item cur">
           <a href="javascript:;">选项一</a>
         </div>
         <div class="tab-item">
@@ -26,6 +26,14 @@
         <div class="content-item">3</div>
       </div>
     </div>
-    <script src="./selectCard.js"></script>
+    <script type="text/javascript" src="./selectCard.js"></script>
+    <script type="text/javascript">
+      var tab = new Tab({
+        tabItem: "tab-item",
+        contentItem: "content-item",
+        cur: "cur",
+        active: "active",
+      });
+    </script>
   </body>
 </html>
