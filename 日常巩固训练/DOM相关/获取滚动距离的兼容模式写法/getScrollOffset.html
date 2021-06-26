@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //我们还是在这里写一下获取滚动距离的兼容模式的写法吧，便于我们以后在项目中的使用
+      function getScrollOffset() {
+        //首先兼容一下我们好多人现在常用的window.scrollX/scrollY方法
+        if (window.scrollX) {
+          return {
+            x: window.scrollX,
+            y: window.scrollY,
+          };
+        } else if (window.pageXOffset) {
+          return {
+            x: window.pageXOffset,
+            y: window.pageYOffset,
+          };
+        } else {
+          //以下两种方法中只会兼容一种(比如：谷歌会兼容下面document.body.scrollLeft方法)
+          return {
+            x: document.body.scrollLeft + document.documentElement.scrollLeft,
+            y: document.body.scrollTop + document.documentElement.scrollTop,
+          };
+        }
+      }
+    </script>
+  </body>
+</html>
