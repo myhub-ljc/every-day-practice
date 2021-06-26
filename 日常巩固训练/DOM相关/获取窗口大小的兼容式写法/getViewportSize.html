@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //下面我们就来写一下获取窗口大小的兼容模式的写法吧
+      function getViewportSize() {
+        //首先判断我们最常用的方法
+        if (window.innerWidth) {
+          return {
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
+        } else if (document.compatMode === "CSS1Compat") {
+          //这是兼容标准模式
+          return {
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight,
+          };
+        } else {
+          //这是兼容怪异模式BackCompat
+          return {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight,
+          };
+        }
+      }
+    </script>
+  </body>
+</html>
