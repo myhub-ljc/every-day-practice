@@ -27,24 +27,21 @@
           } else {
             return window.getComputedStyle(elem, null);
           }
-        } else if (elem.currentStyle) {
+        } else {
           if (property) {
             //下面这个方法在谷歌浏览器中是不生效的
             return elem.currentStyle(elem, null)[property];
           } else {
             return elem.currentStyle(elem, null);
           }
-        } else {
-          if (property) {
-            return elem.offsetWidth;
-          } else {
-            return elem.offsetHeight;
-          }
         }
       }
 
       //测试一下
       console.log(getStyles(div, "width"));
+      console.log(getStyles(div, "after").width);
+
+      //而上述方法中的第二个参数是用来获取伪元素的
     </script>
   </body>
 </html>
