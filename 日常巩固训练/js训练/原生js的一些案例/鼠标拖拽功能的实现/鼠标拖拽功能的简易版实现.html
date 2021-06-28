@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>鼠标拖拽的简易版实现</title>
+    <style>
+      .box {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      var box = document.getElementsByClassName("box")[0];
+      //我们先来实现一个简易版的拖拽(这里我们没有考虑到对pageX/Y方法的兼容性封装)
+      document.onmousemove = function (event) {
+        var event = event || window.event;
+
+        box.style.left = event.pageX + "px";
+        box.style.top = event.pageY + "px";
+      };
+    </script>
+  </body>
+</html>

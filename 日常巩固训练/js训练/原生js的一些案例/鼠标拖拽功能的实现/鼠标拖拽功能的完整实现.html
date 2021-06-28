@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>鼠标拖拽的简易版实现</title>
+    <style>
+      .box {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      var box = document.getElementsByClassName("box")[0];
+      //我们先来实现一个简易版的拖拽
+      document.onmousemove = function (event) {
+        var event = event || window.event;
+        var page = pagePos(event);
+
+        box.style.left = page.X + "px";
+        box.style.top = page.Y + "px";
+      };
+
+      //下面我们来具体封装一下pageX/Y的兼容性, 便于我们以后的使用
+      function pagePos(event) {
+        //获取滚动条的距离
+        var sLeft = getScroll().left;
+        var sTop = getScroll().top;
+        //获取偏移量
+        var cLeft = document.documentElement.clientLeft || 0;
+        var cTop = document.documentElement.clientTop || 0;
+
+        return {
+          X: event.clientX + sLeft - cLeft,
+          Y: event.clientY + sTop - cTop,
+        };
+      }
+
+      //这里我们还是得实现一下之前我们封装的一个获取滚动条距离的函数
+      function getScroll() {
+        if (window.scrollX) {
+          return {
+            left: window.scrollX,
+            right: window.scrollY,
+          };
+        } else if (window.pageXOffset) {
+          return {
+            left: window.pageXOffset,
+            top: window.pageYOffset,
+          };
+        } else {
+          return {
+            left:
+              document.body.scrollLeft + document.documentElement.scrollLeft,
+            top: document.body.scrollTop + document.documentElement.scrollTop,
+          };
+        }
+      }
+    </script>
+  </body>
+</html>
