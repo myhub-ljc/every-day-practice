@@ -1,4 +1,4 @@
-//模拟创建链表
+//js中是没有链表这种数据结构的, 但是我们可以借助于Object来模拟实现链表
 const a = { val: 'a' };
 const b = { val: 'b' };
 const c = { val: 'c' };

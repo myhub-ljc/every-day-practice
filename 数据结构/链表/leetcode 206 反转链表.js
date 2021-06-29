@@ -9,8 +9,8 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function (head) {
-     /**
+
+    /**
       * 解题思路：
       *     反转两个节点：将n+1的next指向n
       *     反转多个节点：双指针遍历链表，重复上述操作
@@ -19,7 +19,8 @@ var reverseList = function (head) {
       *     双指针一前一后遍历链表
       *     反转双指针
       */
-     
+
+var reverseList = function (head) {     
     //创建两个指针
     let p1 = head;
     let p2 = null;
