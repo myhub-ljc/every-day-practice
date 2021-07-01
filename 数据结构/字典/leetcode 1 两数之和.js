@@ -1,10 +1,4 @@
 /**
- * 解题步骤：
- *      新建一个字典
- *      遍历nums中的值
- */
-
-/**
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
@@ -13,14 +7,15 @@
     //新建一个字典
     const map = new Map();
 
-    //一次循环遍历
+    //循环遍历nums中的每一个元素
     for(let i = 0; i < nums.length; i++) {
-        const n = nums[i];
-        const n2 = target - n;
+        var n1 = nums[i];
+        var n2 = target - n1;
+
         if(map.has(n2)) {
             return [map.get(n2), i];
         } else {
-            map.set(n, i);
+            map.set(n1, i);
         }
     }
 };
