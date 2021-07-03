@@ -34,22 +34,28 @@
     }
 }
 
-const preorder = (root) => {
+//非递归实现二叉树的先序遍历
+const preorder = root => {
+    //避免root为空 
     if (!root) { return; }
     
-    //创建一个栈，并将根节点入栈
+    //先创建一个栈并将根节点入栈
     const stack = [root];
 
     while (stack.length) {
-        //因为首先要访问根节点，所以应该先将栈顶元素弹出并访问
-        const n = stack.pop();
-        console.log(n.val);
+        //访问根节点并将根节点出栈
+        const head = stack.pop();
+        console.log(head.val);
 
-        //最后需要访问右子树
-        if (n.right) stack.push(n.right);
+        //再将右子树入栈
+        if (head.right) {
+            stack.push(head.right)
+        };
 
-        //接下来需要访问左子树(因此需要先将右子树入栈)
-        if (n.left) stack.push(n.left);
+        //最后再将左子树入栈（根据栈的先进后出原则）
+        if (head.left) {
+            stack.push(head.left)
+        };
     }
 }
 

@@ -28,28 +28,28 @@ const bt = {
     }
 }
 
-const inorder = (root) => {
+//非递归实现中序遍历
+const inorder = root => {
+    //避免root为空
     if (!root) { return; }
     
-    //首先将左子树入栈
+    //新建一个栈
     const stack = [];
     let p = root;
-    
     while (stack.length || p) {
-        //然后访问左子树
+        //直到访问完所有的左子树
         while (p) {
             stack.push(p);
             p = p.left;
         }
 
-        //紧接着访问根节点
-        const n = stack.pop();
-        console.log(n.val);
+        //这里会依次打印左子树、根节点、右子树
+        const head = stack.pop();
+        console.log(head.val);
 
-        //最后访问右节点
-        p = n.right;
+        //最后访问右子树
+        p = head.right;
     }
-};
+}
 
 inorder(bt);
-
