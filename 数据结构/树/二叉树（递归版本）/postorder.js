@@ -1,10 +1,4 @@
-/**
- * 先序遍历的算法口诀：
- *      先访问根节点
- *      对根节点的左节点进行先序遍历
- *      对根节点的右节点进行先序遍历
- */
-const tree = {
+const bt = {
     val: 1,
     left: {
         val: 2,
@@ -32,16 +26,18 @@ const tree = {
             right: null
         }
     }
-}
+};
 
-const preorder = (root) => {
-    if (root === null) return;
-    //先访问根节点
+const postorder = (root) => {
+    if (!root) { return;}
+    //先访问根节点的左子树(递归实现)
+    postorder(root.left);
+
+    //再访问根节点的右子树(递归实现)
+    postorder(root.right);
+
+    //最后访问根节点
     console.log(root.val);
-    //对根节点的左子树进行先序遍历
-    preorder(root.left);
-    //对根节点的右子树进行先序遍历
-    preorder(root.right);
 }
 
-preorder(tree);
+postorder(bt);

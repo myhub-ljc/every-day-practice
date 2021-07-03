@@ -26,18 +26,19 @@ const bt = {
             right: null
         }
     }
-};
-
-const postorder = (root) => {
-    if (root == null) return false;
-    //先访问根节点的左子树
-    postorder(root.left);
-
-    //再访问根节点的右子树
-    postorder(root.right);
-
-    //最后访问根节点
-    console.log(root.val);
 }
 
-postorder(bt);
+const inorder = (root) => {
+    if (!root) {return;}
+    //先访问根节点的左子树（递归实现）
+    inorder(root.left);
+
+    //再访问根节点
+    console.log(root.val);
+
+    //然后访问根节点的右子树（递归实现）
+    inorder(root.right);
+};
+
+inorder(bt);
+
