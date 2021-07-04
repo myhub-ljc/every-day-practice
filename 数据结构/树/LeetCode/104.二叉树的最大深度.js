@@ -21,20 +21,20 @@
  *      （2）深度优先遍历正棵二叉树，并记录所访问节点所在的层级，同时不断刷新最大深度这个变量
  *      （3）遍历结束返回这个最大深度即可
  */
+    //用来记录每个节点所在的层级
     let res = 0;
-    const dfs = (n, level) => {
-        if(!n){return;}
-        // console.log(n.val);
-        //求出最大层级
-        // res = Math.max(res, level);
-        //优化一下：只比较叶子结点就行了
+    const mdfs = (n, level) => {
+        //避免根节点为空
+        if(!n) {return;};
+        
+        //在叶子节点处再判断此时的最大深度
         if(!n.left && !n.right) {
             res = Math.max(res, level);
         }
-        //遍历根节点的所有子节点并记录所访问节点所在的层级
-        dfs(n.left, level+1);
-        dfs(n.right, level+1);
-    }
-    dfs(root, 1);
+        mdfs(n.left, level + 1);
+        mdfs(n.right, level + 1);
+    } 
+
+    mdfs(root, 1);
     return res;
 };
