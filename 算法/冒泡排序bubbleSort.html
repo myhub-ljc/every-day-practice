@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      Array.prototype.bubbleSort = function () {
+        for (let i = 0; i < this.length - 1; i++) {
+          for (let j = 0; j < this.length - 1 - i; j++) {
+            if (this[j] > this[j + 1]) {
+              const temp = this[j];
+              this[j] = this[j + 1];
+              this[j + 1] = temp;
+            }
+          }
+        }
+      };
+
+      //测试一下
+      let arr = [3, 1, 2, 5];
+      arr.bubbleSort();
+      console.log(arr);
+    </script>
+  </body>
+</html>
