@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      Array.prototype.insertSort = function () {
+        //从第二个元素开始依次与前一个数据进行比较
+        for (let i = 1; i < this.length; i++) {
+          //拿到第二个元素
+          const temp = this[i];
+          let j = i;
+          while (j > 0) {
+            if (this[j - 1] > temp) {
+              this[j] = this[j - 1];
+            } else {
+              break;
+            }
+            j--;
+          }
+          this[j] = temp;
+        }
+      };
+
+      const arr = [3, 4, 2, 1, 5];
+      arr.insertSort();
+      console.log(arr);
+    </script>
+  </body>
+</html>
