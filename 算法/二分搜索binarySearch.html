@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      Array.prototype.binarySearch = function (item) {
+        //我们这里假设是有序的数组
+        //分别创建一个变量用于记录最大最下值的下标
+        let min = 0;
+        let max = this.length - 1;
+        //只要以min为下标的值小于以max为下标的值就一直执行直到找到目标元素并且返回其下标
+        while (min <= max) {
+          //这里需要先拿到中间元素的下标
+          const mid = Math.floor(this.length / 2);
+          if (item < this[mid]) {
+            max = mid - 1;
+          } else if (item > this[mid]) {
+            min = mid + 1;
+          } else {
+            return mid;
+          }
+        }
+        return -1;
+      };
+
+      const arr = [1, 2, 3, 4, 5];
+      const index = arr.binarySearch(3);
+      console.log(index);
+    </script>
+  </body>
+</html>
