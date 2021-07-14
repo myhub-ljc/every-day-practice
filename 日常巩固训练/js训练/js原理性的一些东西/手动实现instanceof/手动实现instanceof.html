@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //下面我们手动实现一下instanceof
+      function myInstanceof(left, right) {
+        //判断数据类型如果不是引用数据类型或者为空值, 则直接返回false
+        if (typeof left !== "object" || typeof left === null) {
+          return false;
+        }
+
+        //获取到left的原型
+        const proto = Object.getPrototypeOf(left);
+
+        while (true) {
+          //如果最终也没有查找原型
+          if (typeof proto == null) {
+            return false;
+          }
+
+          //如果查找到
+          if (proto == right.prototype) {
+            return true;
+          }
+        }
+      }
+
+      //测试一下
+      console.log(myInstanceof(1, Number)); //false
+      console.log(myInstanceof(new Number(1), Number)); //true
+      console.log(myInstanceof()); //false
+    </script>
+  </body>
+</html>
