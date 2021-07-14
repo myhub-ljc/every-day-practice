@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //instanceof也是可以判断基本数据类型的
+      class myInstanceof {
+        static [Symbol.hasInstance](x) {
+          return typeof x == "boolean";
+        }
+      }
+
+      //测试
+      console.log(true instanceof myInstanceof); //true
+      console.log("1" instanceof myInstanceof); //false
+    </script>
+  </body>
+</html>

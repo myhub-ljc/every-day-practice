@@ -11,7 +11,7 @@
     <script>
       //下面我们手动实现一下instanceof
       function myInstanceof(left, right) {
-        //判断数据类型如果不是引用数据类型或者为空值, 则直接返回false
+        //判断数据类型如果不是引用数据类型或者为null这一基本数据类型, 则直接返回false
         if (typeof left !== "object" || typeof left === null) {
           return false;
         }
