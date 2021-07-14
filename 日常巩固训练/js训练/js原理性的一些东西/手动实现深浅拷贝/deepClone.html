@@ -10,19 +10,46 @@
     <div>我是直接生成的代码片段</div>
     <script>
       //下面我们在浅拷贝的基础上手动封装一个简单的深拷贝(这里还借助了weakMap解决了循环引用的问题)
-      function deepClone(target, map = new WeakMap()) {
-        //如果已经拷贝过, 那么直接返回就行了
+      // function deepClone(target, map = new WeakMap()) {
+      //   //如果已经拷贝过, 那么直接返回就行了
+      //   if (map.get(target)) {
+      //     return target;
+      //   }
+
+      //   const isObject = (target) =>
+      //     typeof target === "object" && typeof target !== "null";
+
+      //   if (isObject(target)) {
+      //     map.set(target, true);
+      //     const cloneTarget = Array.isArray(target) ? [] : {};
+      //     for (let item in target) {
+      //       if (target.hasOwnProperty(item)) {
+      //         cloneTarget[item] = deepClone(target[item], map);
+      //       }
+      //     }
+      //     return cloneTarget;
+      //   } else {
+      //     return target;
+      //   }
+      // }
+      function deepClone(target, map = new Map()) {
+        //如果该对象已经拷贝过, 直接返回就行了
         if (map.get(target)) {
           return target;
         }
 
+        //判断数据类型是否是引用数据类型并且不是null这一基本数据类型
         const isObject = (target) =>
           typeof target === "object" && typeof target !== "null";
 
+        //如果该对象没有拷贝过
         if (isObject(target)) {
           map.set(target, true);
+          //根据target是数组还是普通对象来创建一个cloneTarget
           const cloneTarget = Array.isArray(target) ? [] : {};
+
           for (let item in target) {
+            //判断原型是否有属性, 因为原型上的属性也是需要拷贝的
             if (target.hasOwnProperty(item)) {
               cloneTarget[item] = deepClone(target[item], map);
             }
