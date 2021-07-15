@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      function myNew(constructor, ...args) {
+        //创建一个空的对象
+        const obj = Object.create(constructor.prototype);
+        //改变this的指向
+        const res = constructor.apply(obj, args);
+
+        let isObj = typeof res === "object" && res !== null;
+        let isFunction = typeof res === "function";
+        return isObj || isFunction ? res : obj;
+      }
+
+      //测试一下
+      function test(a, b) {
+        this.a = a;
+        this.b = b;
+      }
+
+      const newTest = myNew(test, 10, 20);
+      console.log(newTest);
+    </script>
+  </body>
+</html>
