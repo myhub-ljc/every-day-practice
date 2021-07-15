@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //下面我们来实现一下call
+      Function.prototype.myCall = function (context, ...args) {
+        //改变this指向
+        context.fn = this;
+        //改变this指向后立马执行该函数
+        let result = eval("context.fn(...args)");
+
+        //只是临时改变this的指向一次
+        delete context.fn;
+        return result;
+      };
+
+      //测试一下
+      const foo = {
+        name: "kobe",
+      };
+
+      function Test() {
+        console.log(this.name);
+      }
+
+      var test = Test.myCall(foo);
+      console.log(test);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //下面我们来实现一下bind
+      Function.prototype.myBind = function (context, ...args) {
+        let self = this;
+        let resultBind = function () {
+          //普通函数改变this的指向
+          self.apply(
+            this instanceof self ? self : context,
+            args.concat(Array.from(arguments))
+          );
+        };
+
+        //构造函数还要保存原型上的属性
+        resultBind.prototype = Object.create(self.prototype);
+        return resultBind;
+      };
+
+      //测试一下
+      const foo = {
+        name: "kobe",
+      };
+
+      function Test(a, b) {
+        console.log(this.name);
+        console.log(a);
+        console.log(b);
+      }
+
+      //   var test = Test.myBind(foo, 10, 20);//可以一次性传入所有参数
+      //   test();
+      var test = Test.myBind(foo, 10); //也可以分批次传入参数
+      test(20);
+    </script>
+  </body>
+</html>
