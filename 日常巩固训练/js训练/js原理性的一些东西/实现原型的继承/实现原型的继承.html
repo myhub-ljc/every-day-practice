@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //下面我们来实现一下寄生组合继承
+      function Parent() {
+        this.name = "kobe";
+      }
+
+      function Child() {
+        //第一种直接借助于call但是它虽然可以使用父类的属性和方法，却无法访问到原型上的属性和方法
+        Parent.call(this);
+        this.age = 24;
+      }
+      //第二种通过原型链的方式 但是你又会发现当修改Child的某一个实例对象时，另外一个实例对象也会跟着修改
+      // Child.prototype = new Parent();
+      //第三种便是将前两种方法结合在一起 但是你又会发现父类的构造函数被执行了两次
+      //第四种便是将parent的原型直接赋值给child 但是你又会发现子类的构造函数却是Parent而不是Child
+      // Child.prototype = Parent.prototype;
+      //第五种便是我们最后推荐的寄生组合继承
+      Child.prototype = Object.create(Parent.prototype); //获取到原型上的属性和方法
+      Child.prototype.constructor = Child; //改变构造函数的指向
+
+      console.log(new Child());
+    </script>
+  </body>
+</html>
