@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //实现十进制转二进制
+      function dec2bin(decNumber) {
+        //1，新建一个栈用于存储每次获得的余数
+        let stack = [];
+
+        //2，循环操作
+        while (decNumber > 0) {
+          //3，将每次获得的余数push进栈中
+          stack.push(decNumber % 2);
+
+          //4，获取每次整除后的结果并将其作为下一次运行的数字
+          decNumber = Math.floor(decNumber / 2);
+        }
+
+        //5，最后将栈中的所有元素倒序输出
+        let result = "";
+        while (stack.length) {
+          result += stack.pop() + "";
+        }
+        return result;
+      }
+
+      //测试一下
+      console.log(dec2bin(100));
+    </script>
+  </body>
+</html>

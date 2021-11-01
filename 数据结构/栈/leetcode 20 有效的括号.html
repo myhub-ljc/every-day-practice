@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      function isValid(s) {
+        //s的长度如果是奇数，那么直接返回false
+        if (s.length % 2 === 1) {
+          return false;
+        }
+        //新建一个栈
+        let stack = [];
+        //遍历s并将所有左括号入栈
+        for (let item of s) {
+          if (item === "(" || item === "{" || item === "[") {
+            stack.push(item);
+          } else {
+            //获取到栈顶的元素
+            let stackPeek = stack[stack.length - 1];
+            //如果栈顶的元素与右括号相匹配，则将该左括号出栈
+            if (
+              (stackPeek === "(" && item === ")") ||
+              (stackPeek === "{" && item === "}") ||
+              (stackPeek === "[" && item === "]")
+            ) {
+              stack.pop();
+            } else {
+              return false;
+            }
+          }
+        }
+        //最后判断栈是否为空
+        return stack.length === 0 ? true : false;
+      }
+
+      //测试一下
+      console.log(isValid("({}")); //false
+    </script>
+  </body>
+</html>

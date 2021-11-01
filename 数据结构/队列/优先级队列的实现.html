@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //优先级队列的实现主要在于添加方法的不同
+      function PriorityQueue() {
+        this.items = [];
+
+        //这里我们再封装一个内部类
+        function QueueElement(element, priority) {
+          this.element = element;
+          this.priority = priority;
+        }
+
+        //常用操作
+        //enqueue
+        PriorityQueue.prototype.enqueue = function (element, priority) {
+          let queueElement = new QueueElement(element, priority);
+          //接下来我们需要根据元素的优先级进行一个存放
+          if (this.items.length === 0) {
+            this.items.push(queueElement);
+          } else {
+            for (let i = 0; i < this.items.length; i++) {
+              let flag = false;
+              if (queueElement.priority < this.items[i].priority) {
+                this.items.splice(i, 0, queueElement);
+                flag = true;
+                break;
+              } else {
+                this.items.push(queueElement);
+              }
+            }
+          }
+        };
+
+        //toString
+        PriorityQueue.prototype.toString = function () {
+          let result = "";
+          for (let item of this.items) {
+            result += item.element + "-" + item.priority + " ";
+          }
+          return result;
+        };
+
+        //其他操作和普通队列一样
+      }
+
+      //测试一下
+      let priorityQueue = new PriorityQueue();
+      priorityQueue.enqueue("kobe", 24);
+      priorityQueue.enqueue("james", 23);
+      console.log(priorityQueue.toString());
+    </script>
+  </body>
+</html>

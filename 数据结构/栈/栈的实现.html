@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>秃头的科比</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //栈的实现
+      function Stack() {
+        this.items = [];
+        //栈的常用操作
+        //1，push
+        Stack.prototype.push = function (element) {
+          this.items.push(element);
+        };
+
+        //2，pop
+        Stack.prototype.pop = function () {
+          return this.items.pop();
+        };
+
+        //3，peek
+        Stack.prototype.peek = function () {
+          return this.items[this.items.length - 1];
+        };
+
+        //4，isEmpty
+        Stack.prototype.isEmpty = function () {
+          return this.items.length === 0;
+        };
+
+        //5，size
+        Stack.prototype.size = function () {
+          return this.items.length;
+        };
+
+        //6，toString
+        Stack.prototype.toString = function () {
+          let resultString = "";
+          for (let i = 0; i < this.items.length; i++) {
+            resultString += this.items[i] + " ";
+          }
+          return resultString;
+        };
+      }
+
+      let stack = new Stack();
+      //下面我们来测试一下
+      stack.push(10);
+      stack.push(20);
+      console.log(stack); //[10, 20]
+
+      stack.pop();
+      console.log(stack); //[10]
+
+      console.log(stack.peek()); //[10]
+
+      console.log(stack.isEmpty()); //false
+
+      console.log(stack.size()); //1
+
+      console.log(stack.toString()); //'10'
+    </script>
+  </body>
+</html>
