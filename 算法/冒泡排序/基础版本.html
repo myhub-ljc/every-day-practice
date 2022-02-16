@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>冒泡排序的基础版本</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      /*
+            冒泡排序的基本思路：
+            （1）依次比较所有的相邻元素，如果第一个大于第二个，则交换它们，这样一轮下来，最右边的便是最大的元素。
+            （2）最后再执行n-1轮就行了。
+        */
+
+      function bubbleSort(arr) {
+        //这里我们需要执行n-1轮
+        for (let j = arr.length - 1; j >= 0; j--) {
+          //这里需要注意每轮中比较的次数
+          for (let i = 0; i < j; i++) {
+            if (arr[i] > arr[i + 1]) {
+              let temp = arr[i + 1];
+              arr[i + 1] = arr[i];
+              arr[i] = temp;
+            }
+          }
+        }
+        //将排序好的数组返回出去
+        return arr;
+      }
+
+      //测试一下
+      console.log(bubbleSort([6, 3, 2, 1, 4, 5])); //[1, 2, 3, 4, 5, 6]
+    </script>
+  </body>
+</html>

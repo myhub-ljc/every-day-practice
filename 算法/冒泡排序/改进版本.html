@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>冒泡排序的改进版本</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      /*
+            其实有时候并不需要都进行n-1轮，例如：[1,2,4,3],在第一轮循环后就变成了[1,2,3,4],就无需进入接下来的循环了。
+            因此在每一轮循环中需要设置一个标志位。它的作用是：当排序在某次循环中已全部完成时，就无需再次循环直至结束。
+        */
+
+      function bubbleSort(arr) {
+        for (let j = arr.length - 1; j >= 0; j--) {
+          //设置的标志位
+          let done = true;
+          for (let i = 0; i < j; i++) {
+            if (arr[i] > arr[i + 1]) {
+              let temp = arr[i + 1];
+              arr[i + 1] = arr[i];
+              arr[i] = temp;
+              //如果本轮循环中依然需要交换，那么就需要设置标志位为false
+              done = false;
+            }
+          }
+
+          //如果某轮循环中已经不需要交换了也就是不需要更改标志位了，那么意味着循环可以提前结束了
+          if (done) {
+            break;
+          }
+        }
+        return arr;
+      }
+
+      console.log(bubbleSort([6, 3, 2, 1, 4, 5])); //[1, 2, 3, 4, 5, 6]
+    </script>
+  </body>
+</html>
