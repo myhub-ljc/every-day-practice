@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>instanceof原理实现</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      function myInstanceof(left, right) {
+        //限制条件
+        if (typeof left !== "object" || left === null) {
+          return false;
+        }
+
+        //获取left的原型
+        let proto = Object.getPrototypeOf(left);
+
+        while (true) {
+          //如果左边没有原型的话,而这不操作正是用来正确判断null这一基本数据类型的, 因为它没有原型
+          if (proto === null) {
+            return false;
+          }
+
+          if (proto == right.prototype) {
+            return true;
+          }
+        }
+      }
+
+      //测试一下
+      console.log(myInstanceof(1, Number)); //false
+      console.log(myInstanceof("1", String)); //false;
+      //但是有一个问题：对于有包装类概念的基本数据类型呢
+      console.log(myInstanceof(new String("1"), String)); //true
+      console.log(myInstanceof(new Number(1), Number)); //true
+      console.log(myInstanceof(null, null)); //false 证明可以正确判断null这一基本数据类型
+      console.log(myInstanceof([1], Array)); //true
+      console.log(myInstanceof({}, Object)); //true
+    </script>
+  </body>
+</html>
