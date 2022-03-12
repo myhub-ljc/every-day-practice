@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>shallowClone浅拷贝的实现</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      function shallowClone(target) {
+        //首先只有引用数据类型才会出现引用值共享问题
+        if (typeof target !== "object" || target === null) {
+          return target;
+        } else {
+          //根据具体情况去创建对应的空对象
+          let cloneTarget = Array.isArray(target) ? [] : {};
+
+          //依次遍历arr中的所有元素并存入新的空对象中
+          for (let i = 0; i < target.length; i++) {
+            //只拷贝自身所拥有的属性
+            if (target.hasOwnProperty(i)) {
+              cloneTarget.push(target[i]);
+            }
+          }
+
+          return cloneTarget;
+        }
+      }
+
+      //测试一下
+      let arr = [1, 2, 3];
+      console.log(arr); //[1, 2, 3]
+      let newArr = shallowClone(arr);
+      console.log(newArr); //[1, 2, 3]
+
+      //接下来我们就修改下数据，观察是否会出现引用值共享的问题
+      newArr[0] = 2;
+      console.log(arr); //[1, 2, 3]
+      console.log(newArr); //[2, 2, 3]
+    </script>
+  </body>
+</html>
