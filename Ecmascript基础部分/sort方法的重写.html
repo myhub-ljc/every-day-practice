@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>sort方法的重写</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      Array.prototype.mySort = function (arr) {
+        arr.sort(function (a, b) {
+          if (a - b > 0) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        return arr;
+      };
+
+      //测试一下
+      let arr = [2, 1, 3];
+      console.log(arr.mySort(arr)); //[1, 2, 3]
+    </script>
+  </body>
+</html>

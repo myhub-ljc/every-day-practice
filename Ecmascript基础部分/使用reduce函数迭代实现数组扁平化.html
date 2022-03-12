@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>使用reduce函数迭代实现数组扁平化</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      let newArr = [];
+
+      function flatten(arr) {
+        arr.reduce(function (pre, cur) {
+          Array.isArray(cur) ? flatten(cur) : newArr.push(cur);
+        }, []);
+        return newArr;
+      }
+
+      //测试一下
+      let arr = [1, [2, [3, [4]]], 5];
+      console.log(flatten(arr)); //[1, 2, 3, 4, 5]
+    </script>
+  </body>
+</html>
