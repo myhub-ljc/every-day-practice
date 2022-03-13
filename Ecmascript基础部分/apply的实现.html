@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>apply的实现</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      //注意这里的参数argArray是以数组的形式传入的
+      Function.prototype.myApply = function (thisArg, argArray) {
+        //获取执行的函数
+        let fn = this;
+
+        //这里需要处理绑定的this参数thisAra,对null、undefined类型直接返回window，而对于其它基本数据类型需要转为对象
+        thisArg = thisArg ? Object(thisArg) : window;
+
+        //执行函数, 但是为了所有人的调用
+        thisArg.fn = fn;
+        //这里还需要注意一下，如果没有传入参数的情况下，我们可以赋予一个空的数组
+        argArray = argArray ? argArray : [];
+        let result = thisArg.fn(...argArray);
+
+        delete thisArg.fn;
+
+        return result;
+      };
+
+      function test(name, age) {
+        console.log(this, name, age);
+      }
+
+      test.myApply({});
+    </script>
+  </body>
+</html>

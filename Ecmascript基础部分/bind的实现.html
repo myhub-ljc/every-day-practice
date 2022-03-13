@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>bind的实现</title>
+  </head>
+  <body>
+    <div>我是直接生成的代码片段</div>
+    <script>
+      Function.prototype.myBind = function (thisArg, ...argArray) {
+        //获取执行的函数
+        let fn = this;
+
+        //处理绑定的this thisArg类型问题
+        thisArg = thisArg ? Object(thisArg) : window;
+
+        //因为最终需要返回的是一个可供后续调用的函数
+        function proxy(...args) {
+          thisArg.fn = fn;
+          //这里需要处理一下参数的问题，因为参数是可以后续传入的
+          let finalArg = [...argArray, ...args];
+          let result = thisArg.fn(...finalArg);
+          return result;
+        }
+
+        return proxy;
+      };
+
+      function test(name, age) {
+        console.log(this, name, age);
+      }
+
+      let newTest = test.myBind({}, "kobe");
+      newTest(24);
+    </script>
+  </body>
+</html>
